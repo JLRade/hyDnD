@@ -1,7 +1,7 @@
 class hero:
     name = ""
-    strengthstat = 0
-    speedstat = 0
-    luckstat = 0
+    strength_stat = 0
+    speed_stat = 0
+    luck_stat = 0
     iqstat = 0
     healthstat = 0
