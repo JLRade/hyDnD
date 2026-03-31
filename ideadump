@@ -21,4 +21,4 @@ monster
 armorset
     rarity
     rating
-    effect
+    effect {"strengthstat", rating} (dictionary)
