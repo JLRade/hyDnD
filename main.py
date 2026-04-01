@@ -3,6 +3,9 @@ oliver = classes.hero()
 
 sword = classes.weapon()
 
-oliver.healthstat -= 2
+oliver.health_stat -= 2
 
-oliver.strengthstat+=sword.strength_buff
+oliver.strength_stat+=sword.strength_buff
+
+print(oliver.health_stat)
+print(sword.strength_buff)
