@@ -8,5 +8,5 @@ class hero:
 
 class weapon:
     attack_stat = 0
-    strength_buff = 0
+    strength_buff = 2
     rarity = "rare"
