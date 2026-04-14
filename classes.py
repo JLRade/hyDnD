@@ -1,12 +1,19 @@
 class hero:
     name = ""
-    strength_stat = 0
-    speed_stat = 0
-    luck_stat = 0
-    iqstat = 0
-    health_stat = 0
+    strengthStat = 0
+    speedStat = 0
+    luckStat = 0
+    iqStat = 0
+    healthStat = 100
 
 class weapon:
-    attack_stat = 0
-    strength_buff = 2
+    attackStat = 0
+    strengthBuff = 2
     rarity = "rare"
+
+class monster:
+    name = ""
+    strengthStat = 0
+    speedStat = 0
+    iqStat = 0
+    healthStat = 0
