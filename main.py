@@ -2,6 +2,7 @@
 # The `time` module pauses the story for effect, and `classes` provides the hero and weapon objects.
 # Pillow is used later to open and display the dungeon image in a window.
 import time
+from shop import shop
 import classes as classes
 from fight import fight
 try:
@@ -156,7 +157,7 @@ else:
     # It tells the player they still have unused points.
     # The game then moves on to creating the weapon.
     print(f"All stats were chosen. You still have {availablePoints} points left for later.")
-sword=classes.weapon()
+sword=classes.weapon(2,0.65,"common")
 time.sleep(2)
 print("To start off, you will fight a basic monster to understand how to play.")
 time.sleep(3)
@@ -174,3 +175,4 @@ print("But if you win, you will get some loot, which can get better depending on
 basicMonster=classes.monster("Gremlin", 4, 4, 13 )
 time.sleep(4)
 fight(player, basicMonster)
+
