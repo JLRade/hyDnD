@@ -1,13 +1,15 @@
 class hero:
-    name = ""
-    strengthStat = 0
-    speedStat = 0
-    luckStat = 0
-    iqStat = 0
-    healthStat = 100
-    foughtYet= False
-    money=0
-    potions={}
+    def __init__(self, name):
+        self.name = name
+        self.strengthStat = 0
+        self.speedStat = 0
+        self.luckStat = 0
+        self.iqStat = 0
+        self.healthStat = 100
+        self.foughtYet= False
+        self.money=0
+        self.potions={}
+        self.weapon = None
 
 class weapon:
     def __init__(self, attack, accuracy, rarity ):

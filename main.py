@@ -2,6 +2,8 @@
 # The `time` module pauses the story for effect, and `classes` provides the hero and weapon objects.
 # Pillow is used later to open and display the dungeon image in a window.
 import time
+
+from hyDnD.classes import hero
 from shop import shop
 import classes as classes
 from fight import fight
@@ -19,7 +21,7 @@ IMAGE_PATH = "C:/Users/Jitesh/Desktop/HyCourse/hyDnD/oliversleeping.jpg"
 # A hero object is created so the game has someone to play as.
 # A weapon object is prepared later when the giant gives the player a sword.
 # These objects come from the custom `classes` module.
-oliver = classes.hero()
+
 #sword = classes.weapon()
 
 #print(oliver.healthStat)
@@ -28,8 +30,8 @@ oliver = classes.hero()
 # This makes the adventure feel personal.
 tempName = input("Greetings, what is your name?\n")
 
-player = classes.hero()
-player.name = tempName
+player = classes.hero(tempName)
+
 
 # The game welcomes the player and sets the scene.
 # A short pause gives the opening dialogue more dramatic timing.
@@ -158,6 +160,7 @@ else:
     # The game then moves on to creating the weapon.
     print(f"All stats were chosen. You still have {availablePoints} points left for later.")
 sword=classes.weapon(2,0.65,"common")
+hero.weapon=sword
 time.sleep(2)
 print("To start off, you will fight a basic monster to understand how to play.")
 time.sleep(3)
