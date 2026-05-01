@@ -3,7 +3,6 @@
 # Pillow is used later to open and display the dungeon image in a window.
 import time
 
-from hyDnD.classes import hero
 from shop import shop
 import classes as classes
 from fight import fight

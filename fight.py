@@ -27,9 +27,15 @@ def fight(player, monster):
                 damage = player.strengthStat + player.weapon.attackStat
                 monster.healthStat -= damage
                 print(f"You hit the {monster.name} for {damage} damage!")
+                if monster.healthStat > 0:
+                    print(f"Player health: {player.healthStat}\n monster health: {monster.healthStat}")
+                else:
+                    print(f"Player health: {player.healthStat}\n monster health: 0")
+
             else:
                 print("You missed!")
                 time.sleep(2)
+                print(f"Player health: {player.healthStat}\n monster health: {monster.healthStat}")
         elif choice == "usepotion":
             if not player.potions:
                 print("You have no potions to use!")
@@ -55,31 +61,31 @@ def fight(player, monster):
         elif choice == "rest":
             if player.healthStat > 75:
                 player.healthStat =100
+                print("You are now fully healed!")
             else:
                 player.healthStat += 25
             print(f"You now have {player.healthStat} health")
         if endfight == True:
             return False
-        elif monster.healthStat != 0:
+        elif monster.healthStat > 0:
             monsterTurn()
         else:
             print("You won the fight!")
+            won = True
             return won
 
 
     def monsterTurn():
         global endfight
         # if player dead end func
+        playerTurn()
         pass
 
     if player.speedStat > monster.speedStat:
         playerTurn()
     else:
         monsterTurn()
-    if monster.healthStat == 0:
-        won = True
-        return won
-    elif player.healthStat == 0:
-        won = False
+    if monster.healthStat == 0 or player.healthStat == 0:
+        global won
         return won
 
