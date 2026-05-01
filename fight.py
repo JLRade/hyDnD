@@ -13,7 +13,7 @@ def fight(player, monster):
         global potionUsed, endfight
         print("It's your turn, what will you do?")
         choice = input("Options: Fight, Rest, Use potion, or Run\n")
-        choice = choice.lower().strip()
+        choice = choice.lower().strip().replace(" ", "")
         # if monster dead end func
 
         if choice == "run" and player.foughtYet:

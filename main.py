@@ -11,7 +11,7 @@ try:
 except ImportError:
     Image = None
 
-IMAGE_PATH = "C:/Users/Jitesh/Desktop/HyCourse/hyDnD/oliversleeping.jpg"
+IMAGE_PATH = "C:/Users/calebashultz/Downloads/Projects/hyDnD/oliversleeping.jpg"
 
 # This file path points to the dungeon image that will be shown if Pillow is installed.
 # It is fixed so the game always knows exactly where to find the picture.
