@@ -26,9 +26,9 @@ IMAGE_PATH = "C:/Users/Jitesh/Desktop/HyCourse/hyDnD/oliversleeping.jpg"
 # The player is asked for a name so the story can address them directly.
 # That name is stored on the hero object.
 # This makes the adventure feel personal.
-tempName = input("Greetings, what is your name?\n")
 
-player = classes.hero(tempName)
+
+player = classes.hero(input("Greetings, what is your name?\n"))
 
 
 # The game welcomes the player and sets the scene.
@@ -158,7 +158,7 @@ else:
     # The game then moves on to creating the weapon.
     print(f"All stats were chosen. You still have {availablePoints} points left for later.")
 sword=classes.weapon(2,0.65,"common")
-hero.weapon=sword
+player.weapon=sword
 time.sleep(2)
 print("To start off, you will fight a basic monster to understand how to play.")
 time.sleep(3)

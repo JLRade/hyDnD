@@ -1,11 +1,11 @@
 class hero:
     def __init__(self, name):
         self.name = name
-        self.strengthStat = 0
-        self.speedStat = 0
-        self.luckStat = 0
-        self.iqStat = 0
-        self.healthStat = 100
+        self.strengthStat = 5
+        self.speedStat = 5
+        self.luckStat = 5
+        self.iqStat = 5
+        self.healthStat =100
         self.foughtYet= False
         self.money=0
         self.potions={}
