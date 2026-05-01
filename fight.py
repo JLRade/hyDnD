@@ -53,7 +53,18 @@ def fight(player, monster):
                     player.luckStat += player.potions["luck"]
                     potionUsed = "luck"
         elif choice == "rest":
-            pass
+            if player.healthStat > 75:
+                player.healthStat =100
+            else:
+                player.healthStat += 25
+            print(f"You now have {player.healthStat} health")
+        if endfight == True:
+            return False
+        elif monster.healthStat != 0:
+            monsterTurn()
+        else:
+            print("You won the fight!")
+            return won
 
 
     def monsterTurn():
