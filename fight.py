@@ -18,7 +18,7 @@ def fight(player, monster):
 
         if choice == "run" and player.foughtYet:
             endfight = True
-        elif choice == "run" and not player.foughtyet:
+        elif choice == "run" and not player.foughtYet:
             print("It' still your first fight, don't run!")
             playerTurn()
             return None

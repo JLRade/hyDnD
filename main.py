@@ -22,9 +22,7 @@ IMAGE_PATH = "C:/Users/Jitesh/Desktop/HyCourse/hyDnD/oliversleeping.jpg"
 # A weapon object is prepared later when the giant gives the player a sword.
 # These objects come from the custom `classes` module.
 
-#sword = classes.weapon()
 
-#print(oliver.healthStat)
 # The player is asked for a name so the story can address them directly.
 # That name is stored on the hero object.
 # This makes the adventure feel personal.
