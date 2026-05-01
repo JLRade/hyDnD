@@ -46,18 +46,20 @@ def fight(player, monster):
             else:
                 potionChoice=input("What potion would you like to use?\n")
                 potionChoice=potionChoice.lower().strip()
-                if potionChoice == "attack":
-                    player.attackStat += player.potions["attack"]
-                    potionUsed = "attack"
-                elif potionChoice == "health":
-                    player.healthStat += player.potions["health"]
-                    potionUsed = "health"
-                elif potionChoice == "speed":
-                    player.speedStat += player.potions["speed"]
-                    potionUsed = "speed"
-                elif potionChoice == "luck":
-                    player.luckStat += player.potions["luck"]
-                    potionUsed = "luck"
+                match potionChoice:
+                    case "attack":
+                        player.attackStat += player.potions["attack"]
+                        potionUsed = "attack"
+                    case "health":
+                        player.healthStat += player.potions["health"]
+                        potionUsed = "health"
+                    case "speed":
+                        player.speedStat += player.potions["speed"]
+                        potionUsed = "speed"
+                    case "luck":
+                        player.luckStat += player.potions["luck"]
+                        potionUsed = "luck"
+
         elif choice == "rest":
             if player.healthStat > 75:
                 player.healthStat =100
