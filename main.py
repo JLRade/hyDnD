@@ -2,7 +2,7 @@
 # The `time` module pauses the story for effect, and `classes` provides the hero and weapon objects.
 # Pillow is used later to open and display the dungeon image in a window.
 import time
-
+import random
 from shop import shop
 import classes as classes
 from fight import fight
@@ -174,5 +174,8 @@ print("If you die, game over, no retries.")
 print("But if you win, you will get some loot, which can get better depending on your luck stat.")
 basicMonster=classes.monster("Gremlin", 4, 4, 13 )
 time.sleep(4)
-fight(player, basicMonster)
-
+won = fight(player, basicMonster)
+if won:
+    earnedGold= int(random.randint(1,3)) * player.luckStat
+    print(f"You earned {earnedGold} gold")
+    player.money+=earnedGold

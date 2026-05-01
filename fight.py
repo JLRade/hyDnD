@@ -21,7 +21,7 @@ def fight(player, monster):
         elif choice == "run" and not player.foughtYet:
             print("It' still your first fight, don't run!")
             playerTurn()
-            return None
+
         elif choice == "fight":
             if random.random() <= player.weapon.accuracyStat:
                 damage = player.strengthStat + player.weapon.attackStat
@@ -70,24 +70,26 @@ def fight(player, monster):
         if endfight == True:
             return False
         elif monster.healthStat > 0:
-            monsterTurn()
+            return monsterTurn()
         else:
             print("You won the fight!")
+            global won
             won = True
             return won
-
 
     def monsterTurn():
         global endfight
         # if player dead end func
-        playerTurn()
+        return playerTurn()  # <-- ADD RETURN HERE
         pass
 
     if player.speedStat > monster.speedStat:
-        playerTurn()
+        return playerTurn()
     else:
-        monsterTurn()
+        return monsterTurn()
     if monster.healthStat == 0 or player.healthStat == 0:
         global won
         return won
+
+
 
