@@ -172,10 +172,15 @@ print("Running allows you to escape from the monster. You can't run this first r
 time.sleep(5)
 print("If you die, game over, no retries.")
 print("But if you win, you will get some loot, which can get better depending on your luck stat.")
-basicMonster=classes.monster("Gremlin", 4, 4, 13 )
+basicMonster=classes.monster("Gremlin", 4, 4, 13,0.25 )
 time.sleep(4)
 won = fight(player, basicMonster)
-if won:
+if won and won!="Ran":
     earnedGold= int(random.randint(1,3)) * player.luckStat
     print(f"You earned {earnedGold} gold")
     player.money+=earnedGold
+elif won == "Ran":
+    print(f"You ran from the monster!")
+else:
+    print("Game over")
+    exit()

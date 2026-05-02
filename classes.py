@@ -29,8 +29,9 @@ class potion:
         return f"potion(stat={self.attackStat!r}, buff={self.statBuff!r})"
 
 class monster:
-    def __init__(self,name,strength,speed,health):
+    def __init__(self,name,strength,speed,health,accuracy):
         self.name = name
         self.strengthStat = strength
         self.speedStat = speed
         self.healthStat = health
+        self.accuracyStat = accuracy

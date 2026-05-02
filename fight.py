@@ -28,14 +28,14 @@ def fight(player, monster):
                 monster.healthStat -= damage
                 print(f"You hit the {monster.name} for {damage} damage!")
                 if monster.healthStat > 0:
-                    print(f"Player health: {player.healthStat}\n monster health: {monster.healthStat}")
+                    print(f"Player health: {player.healthStat}\nMonster health: {monster.healthStat}")
                 else:
-                    print(f"Player health: {player.healthStat}\n monster health: 0")
+                    print(f"Player health: {player.healthStat}\nMonster health: 0")
 
             else:
                 print("You missed!")
                 time.sleep(2)
-                print(f"Player health: {player.healthStat}\n monster health: {monster.healthStat}")
+                print(f"Player health: {player.healthStat}\nMonster health: {monster.healthStat}")
         elif choice == "usepotion":
             if not player.potions:
                 print("You have no potions to use!")
@@ -64,11 +64,17 @@ def fight(player, monster):
             if player.healthStat > 75:
                 player.healthStat =100
                 print("You are now fully healed!")
+                time.sleep(2)
             else:
                 player.healthStat += 25
             print(f"You now have {player.healthStat} health")
+            time.sleep(2)
+        else:
+            print("That is not a valid option. Please try again.")
+            return playerTurn()
         if endfight == True:
-            return False
+            "You ran from the monster!"
+            return "Ran"
         elif monster.healthStat > 0:
             return monsterTurn()
         else:
@@ -78,18 +84,28 @@ def fight(player, monster):
             return won
 
     def monsterTurn():
-        global endfight
-        # if player dead end func
-        return playerTurn()  # <-- ADD RETURN HERE
-        pass
+        if random.random() > monster.accuracyStat:
+            player.healthStat -= monster.strengthStat
+            print(f"The {monster.name} has hit you for {monster.strengthStat} health!")
+            print(f"Player health: {player.healthStat}\nMonster health: {monster.healthStat}")
+            time.sleep(2)
+        else:
+            print(f"The {monster.name} has missed!")
+            time.sleep(2)
+        if player.healthStat > 0:
+            return playerTurn()  # <-- ADD RETURN HERE
+        else:
+            print("You lost the fight!")
+            global won
+            won = False
+            return won
+
 
     if player.speedStat > monster.speedStat:
         return playerTurn()
     else:
         return monsterTurn()
-    if monster.healthStat == 0 or player.healthStat == 0:
-        global won
-        return won
+
 
 
 
