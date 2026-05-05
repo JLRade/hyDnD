@@ -181,18 +181,37 @@ if won and won!="Ran":
     earnedGold= int(random.randint(1,3)) * player.luckStat
     print(f"You earned {earnedGold} gold")
     player.money+=earnedGold
+    time.sleep(2)
+    availablePoints+=basicMonster.strengthStat
+    print(f"You have {availablePoints} points to spend now.")
 elif won == "Ran":
     print(f"You ran from the monster!")
 else:
     print("Game over")
     exit()
 time.sleep(2)
-print("You can now do one of three actions (type the number):\n 1) Rest and fully heal \n2) Go to the shop \n3) Fight another monster")
-choice=input("^__^:")
+print("You can now do one of four actions (type the number):\n1) Rest and fully heal \n2) Go to the shop")
+print("4) Use points")
+choice= ""
+while not choice:
+    try:
+        choice=int(input("^__^:"))
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+
+newMonster=classes.monster("screenagers", 28, 5, 20,0.30 )
 match choice:
     case 1:
         player.healthStat=100
     case 2:
         shop(player)
     case 3:
-        fight(player, basicMonster)
+        while True:
+            print("Which stat would you like to increase? When done type exit")
+            choice=input("^__^:")
+            choice=choice.lower().strip()
+            remainingStats = ["strength", "speed", "luck", "iq"]
+            if choice=="exit":
+                break
+            changeStat(choice)
+time.sleep(2)

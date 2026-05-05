@@ -5,6 +5,7 @@ potionUsed = False
 endfight=False
 def fight(player, monster):
     global potionUsed, endfight
+
     potionUsed = False
     endfight = False
     print(f"Hello, {player.name}, you have entered a fight with a {monster.name}" )
@@ -20,7 +21,7 @@ def fight(player, monster):
             endfight = True
         elif choice == "run" and not player.foughtYet:
             print("It' still your first fight, don't run!")
-            playerTurn()
+            return playerTurn()
 
         elif choice == "fight":
             if random.random() <= player.weapon.accuracyStat:
@@ -39,10 +40,10 @@ def fight(player, monster):
         elif choice == "usepotion":
             if not player.potions:
                 print("You have no potions to use!")
-                playerTurn()
+                return playerTurn()
             elif potionUsed == True:
                 print("You have already used a potion this fight! Pick another action.")
-                playerTurn()
+                return playerTurn()
             else:
                 potionChoice=input("What potion would you like to use?\n")
                 potionChoice=potionChoice.lower().strip()
