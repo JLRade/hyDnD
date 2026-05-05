@@ -7,10 +7,9 @@ class hero:
         self.iqStat = 0
         self.healthStat =100
         self.foughtYet= False
-        self.money=0
-
         self.weapon = None
     potions = {}
+    money = 0
 
 class weapon:
     def __init__(self, attack, accuracy, rarity ):

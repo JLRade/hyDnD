@@ -186,3 +186,13 @@ elif won == "Ran":
 else:
     print("Game over")
     exit()
+time.sleep(2)
+print("You can now do one of three actions (type the number):\n 1) Rest and fully heal \n2) Go to the shop \n3) Fight another monster")
+choice=input("^__^:")
+match choice:
+    case 1:
+        player.healthStat=100
+    case 2:
+        shop(player)
+    case 3:
+        fight(player, basicMonster)
