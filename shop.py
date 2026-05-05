@@ -1,6 +1,6 @@
 from classes import potion
 
-def shop():
+def shop(player):
     print("You have entered the shop. You can buy the following potions.\n")
     print("A potion that increases your attack by 10 for the next fight. It costs 10 gold.\n")
     print("A potion that increases your health by 20 for the next fight. It costs 15 gold.\n")
@@ -9,13 +9,13 @@ def shop():
     choice = input("Which potion would you like to buy? (attack, health, speed, luck)\n")
     choice = choice.lower().strip()
     if choice == "attack":
-        p = potion("attack", 10)
+        p = potion("attack", 10, player)
     elif choice == "health":
-        p = potion("health", 20)
+        p = potion("health", 20, player)
     elif choice == "speed":
-        p = potion("speed", 5)
+        p = potion("speed", 5, player)
     elif choice == "luck":
-        p = potion("luck", 5)
+        p = potion("luck", 5,player)
     else:
         print("Invalid choice, please try again.")
         return shop()

@@ -8,8 +8,9 @@ class hero:
         self.healthStat =100
         self.foughtYet= False
         self.money=0
-        self.potions={}
+
         self.weapon = None
+    potions = {}
 
 class weapon:
     def __init__(self, attack, accuracy, rarity ):
@@ -19,10 +20,10 @@ class weapon:
 
 
 class potion:
-    def __init__(self, stat, buff,):
+    def __init__(self, stat, buff,player):
         self.attackStat = stat
         self.statBuff = buff
-        hero.potions[self.attackStat]=self.statBuff
+        player.potions[self.attackStat]=self.statBuff
 
     def __repr__(self):
         # Provide a readable representation so printing a potion shows its type and buff.
