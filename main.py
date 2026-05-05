@@ -139,18 +139,20 @@ def changeStat(stat):
 
 
 while remainingStats:
-    # The loop keeps running until every stat has been selected.
-    # The player is shown only the stats that are still available.
-    # If all points are gone, the loop ends early and the story continues.
     if availablePoints == 0:
-        print("You don't have any points left. You are ready to adventure into the dungeon. Oliver says: I will give you a weapon to help you on your journey. He gives you a sword.")
+        print("You don't have any points left...")
         break
-    if len(remainingStats) != 1:
-        selectedStat = input(f"Choose a stat to increase ({', '.join(remainingStats)}):\n^__^:")
+
+    # 1. Determine which stat to change
+    if len(remainingStats) == 1:
+        selectedStat = remainingStats[0]
     else:
-        changeStat(remainingStats[0])
+        selectedStat = input(f"Choose a stat to increase ({', '.join(remainingStats)}):\n^__^:")
+
+    # 2. Call the function once and check the result
     if changeStat(selectedStat):
         print(f"You have {availablePoints} points left.")
+
 else:
     # This message appears if the player chooses all remaining stats before the loop ends.
     # It tells the player they still have unused points.
