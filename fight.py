@@ -49,16 +49,17 @@ def fight(player, monster):
                 potionChoice=potionChoice.lower().strip()
                 match potionChoice:
                     case "attack":
-                        player.attackStat += player.potions["attack"]
+                        player.attackStat += player.potions.pop("attack")
                         potionUsed = "attack"
+
                     case "health":
-                        player.healthStat += player.potions["health"]
+                        player.healthStat += player.potions.pop("health")
                         potionUsed = "health"
                     case "speed":
-                        player.speedStat += player.potions["speed"]
+                        player.speedStat += player.potions.pop("speed")
                         potionUsed = "speed"
                     case "luck":
-                        player.luckStat += player.potions["luck"]
+                        player.luckStat += player.potions.pop("luck")
                         potionUsed = "luck"
 
         elif choice == "rest":
@@ -74,15 +75,37 @@ def fight(player, monster):
             print("That is not a valid option. Please try again.")
             return playerTurn()
         if endfight == True:
+            if potionUsed:
+                match potionUsed:
+                    case "attack":
+                        player.attackStat-=10
+                    case "health":
+                        if player.healthStat > 100:
+                            player.healthStat=100
+                    case "speed":
+                        player.speedStat -= 5
+                    case "luck":
+                        player.luckStat -= 5
             "You ran from the monster!"
             return "Ran"
         elif monster.healthStat > 0:
             return monsterTurn()
         else:
+            if potionUsed:
+                match potionUsed:
+                    case "attack":
+                        player.attackStat-=10
+                    case "health":
+                        player.healthStat -= 20
+                    case "speed":
+                        player.speedStat -= 5
+                    case "luck":
+                        player.luckStat -= 5
             print("You won the fight!")
             global won
             won = True
             return won
+
 
     def monsterTurn():
         if random.random() > monster.accuracyStat:
@@ -96,6 +119,16 @@ def fight(player, monster):
         if player.healthStat > 0:
             return playerTurn()  # <-- ADD RETURN HERE
         else:
+            if potionUsed:
+                match potionUsed:
+                    case "attack":
+                        player.attackStat-=10
+                    case "health":
+                        player.healthStat -= 20
+                    case "speed":
+                        player.speedStat -= 5
+                    case "luck":
+                        player.luckStat -= 5
             print("You lost the fight!")
             global won
             won = False

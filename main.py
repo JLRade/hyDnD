@@ -207,6 +207,9 @@ match choice:
         shop(player)
     case 3:
         while True:
+            if availablePoints == 0:
+                print("You don't have any points left.")
+                break
             print("Which stat would you like to increase? When done type exit")
             choice=input("^__^:")
             choice=choice.lower().strip()
