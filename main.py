@@ -191,7 +191,7 @@ else:
     exit()
 time.sleep(2)
 print("You can now do one of four actions (type the number):\n1) Rest and fully heal \n2) Go to the shop")
-print("4) Use points")
+print("3) Use points")
 choice= ""
 while not choice:
     try:
