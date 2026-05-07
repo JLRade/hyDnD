@@ -177,44 +177,59 @@ print("But if you win, you will get some loot, which can get better depending on
 basicMonster=classes.monster("Gremlin", 4, 4, 13,0.25 )
 time.sleep(4)
 won = fight(player, basicMonster)
-if won and won!="Ran":
-    earnedGold= int(random.randint(1,3)) * player.luckStat
-    print(f"You earned {earnedGold} gold")
-    player.money+=earnedGold
-    time.sleep(2)
-    availablePoints+=basicMonster.strengthStat
-    print(f"You have {availablePoints} points to spend now.")
-elif won == "Ran":
-    print(f"You ran from the monster!")
-else:
-    print("Game over")
-    exit()
-time.sleep(2)
-print("You can now do one of four actions (type the number):\n1) Rest and fully heal \n2) Go to the shop")
-print("3) Use points")
-choice= ""
-while not choice:
-    try:
-        choice=int(input("^__^:"))
-    except ValueError:
-        print("Invalid input. Please enter a number.")
+player.foughtYet= True
+def rewards(won):
 
-newMonster=classes.monster("screenagers", 28, 5, 20,0.30 )
-match choice:
-    case 1:
-        player.healthStat=100
-    case 2:
-        shop(player)
-    case 3:
-        while True:
-            if availablePoints == 0:
-                print("You don't have any points left.")
-                break
-            print("Which stat would you like to increase? When done type exit")
-            choice=input("^__^:")
-            choice=choice.lower().strip()
-            remainingStats = ["strength", "speed", "luck", "iq"]
-            if choice=="exit":
-                break
-            changeStat(choice)
+    global availablePoints
+    if won and won!="Ran":
+        earnedGold= int(random.randint(1,3)) * player.luckStat
+        print(f"You earned {earnedGold} gold")
+        player.money+=earnedGold
+        time.sleep(2)
+        availablePoints+=basicMonster.strengthStat
+        print(f"You have {availablePoints} points to spend now.")
+    elif won == "Ran":
+        print(f"You ran from the monster!")
+    else:
+        print("Game over")
+        exit()
+rewards(won)
 time.sleep(2)
+def afterFight():
+    global remainingStats
+    print("You can now do one of four actions (type the number):\n1) Rest and fully heal \n2) Go to the shop")
+    print("3) Use points")
+    choice= ""
+    while not choice:
+        try:
+            choice=int(input("^__^:"))
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+
+    match choice:
+        case 1:
+            player.healthStat=100
+            print("Fully healed!")
+        case 2:
+            shop(player)
+        case 3:
+            while True:
+                if availablePoints == 0:
+                    print("You don't have any points left.")
+                    break
+                print("Which stat would you like to increase? When done type exit")
+                choice=input("^__^:")
+                choice=choice.lower().strip()
+                remainingStats = ["strength", "speed", "luck", "iq"]
+                if choice=="exit":
+                    break
+                changeStat(choice)
+afterFight()
+time.sleep(2)
+print("You will now enter your second fight. This will be much harder")
+newMonster=classes.monster("screenager", 28, 5, 20,0.30 )
+won = fight(player, newMonster)
+rewards(won)
+time.sleep(3)
+afterFight()
