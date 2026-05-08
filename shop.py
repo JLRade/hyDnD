@@ -1,13 +1,22 @@
 from classes import potion
+from classes import weapon
+from classes import hero
 import time
 def shop(player):
-    print("You have entered the shop. You can buy the following potions:\n")
+    print("You have entered the shop. You can buy the following things:\n")
+    time.sleep(1.5)
     print("A potion that increases your attack by 10 for the next fight. It costs 10 gold.\n")
+    time.sleep(1.5)
     print("A potion that increases your health by 20 for the next fight. It costs 15 gold.\n")
+    time.sleep(1.5)
     print("A potion that increases your speed by 5 for the next fight. It costs 12 gold.\n")
+    time.sleep(1.5)
     print("A potion that increases your luck by 5 for the next fight. It costs  12 gold.\n")
-    print("If you don't want to buy a potion, you can also type 'exit' to exit the shop\n")
-    choice = input("Which potion would you like to buy? (attack, health, speed, luck)\n")
+    time.sleep(1.5)
+    print("A sword that has a better attack and accuracy. It costs 20 gold.\n")
+    time.sleep(1.5)
+    print("If you don't want to buy a potion or weapon, you can also type 'exit' to exit the shop\n")
+    choice = input("Which potion would you like to buy? (attack, health, speed, luck, sword)\n^__^:")
     choice = choice.lower().strip()
     if choice == "attack":
         if player.money >= 10:
@@ -27,7 +36,7 @@ def shop(player):
         if player.money >= 12:
             p = potion("speed", 5, player)
         else:
-            print("You don't have enough gold to buy this potion. Pick another potion or exit\n")
+            print("You don't have enough gold to buy this. Choose another option or exit\n")
             time.sleep(2)
             return shop(player)
     elif choice == "luck":
@@ -37,6 +46,11 @@ def shop(player):
             print("You don't have enough gold to buy this potion. Pick another potion or exit\n")
             time.sleep(2)
             return shop(player)
+    elif choice == "sword":
+        if player.money >= 20:
+            newSword = weapon(6, 0.8, "rare")
+            player.weapon= newSword
+            p=False
     elif choice == "exit":
         print("You have exited the shop")
         return False

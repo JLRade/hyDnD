@@ -12,7 +12,7 @@ def fight(player, monster):
 
     def playerTurn():
         global potionUsed, endfight
-        print("It's your turn, what will you do?")
+        print("\nIt's your turn, what will you do?")
         choice = input("Options: Fight, Rest, Use potion, or Run\n^__^:")
         choice = choice.lower().strip().replace(" ", "")
         # if monster dead end func
@@ -20,7 +20,7 @@ def fight(player, monster):
         if choice == "run" and player.foughtYet:
             endfight = True
         elif choice == "run" and not player.foughtYet:
-            print("It' still your first fight, don't run!")
+            print("It' still your first fight, don't run")
             return playerTurn()
 
         elif choice == "fight":
@@ -29,9 +29,9 @@ def fight(player, monster):
                 monster.healthStat -= damage
                 print(f"You hit the {monster.name} for {damage} damage!")
                 if monster.healthStat > 0:
-                    print(f"Player health: {player.healthStat}\nMonster health: {monster.healthStat}")
+                    print(f"\nPlayer health: {player.healthStat}\nMonster health: {monster.healthStat}")
                 else:
-                    print(f"Player health: {player.healthStat}\nMonster health: 0")
+                    print(f"\nPlayer health: {player.healthStat}\nMonster health: 0")
 
             else:
                 print("You missed!")
@@ -110,11 +110,11 @@ def fight(player, monster):
     def monsterTurn():
         if random.random() > monster.accuracyStat:
             player.healthStat -= monster.strengthStat
-            print(f"The {monster.name} has hit you for {monster.strengthStat} health!")
-            print(f"Player health: {player.healthStat}\nMonster health: {monster.healthStat}")
+            print(f"\nThe {monster.name} has hit you for {monster.strengthStat} health!")
+            print(f"\nPlayer health: {player.healthStat}\nMonster health: {monster.healthStat}")
             time.sleep(2)
         else:
-            print(f"The {monster.name} has missed!")
+            print(f"\nThe {monster.name} has missed!")
             time.sleep(2)
         if player.healthStat > 0:
             return playerTurn()  # <-- ADD RETURN HERE
