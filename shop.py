@@ -50,6 +50,9 @@ def shop(player):
         if player.money >= 20:
             newSword = weapon(6, 0.8, "rare")
             player.weapon= newSword
+            print("You bought an sword.")
+            print(f"Sword Stats - Attack: {newSword.attackStat}, Accuracy: {int(newSword.accuracyStat*100)}%, Rarity: {newSword.rarityStat}")
+
             p=False
     elif choice == "exit":
         print("You have exited the shop")

@@ -27,7 +27,7 @@ IMAGE_PATH = "C:/Users/calebashultz/Downloads/Projects/hyDnD/oliversleeping.jpg"
 # This makes the adventure feel personal.
 
 
-player = classes.hero(input("Greetings, what is your name?\n"))
+player = classes.hero(input("Greetings, what is your name?\n^__^:"))
 
 
 # The game welcomes the player and sets the scene.
@@ -160,16 +160,15 @@ else:
     print(f"All stats were chosen. You still have {availablePoints} points left for later.")
 sword=classes.weapon(2,0.65,"common")
 player.weapon=sword
+print("You have been given a basic sword that has an attack stat of two, but it has a 65% accuracy.")
 time.sleep(2)
 print("To start off, you will fight a basic monster to understand how to play.")
 time.sleep(3)
 print("Here's the rules: Whoever has more speed will go first. Your attack will be a composite of your strength stat and your weapon's attack stat")
-print("The fight will go on until either you or the monster runs out of health.")
 time.sleep(5)
 print("Aside from attacking, you have three other options per turn. You can rest, use a potion, or run")
 print("Resting allows you to heal 25 health, at the expense of a turn.")
 time.sleep(5)
-print("Using a potion isn't important right now, as you don't have any.")
 print("Running allows you to escape from the monster. You can't run this first round")
 time.sleep(5)
 print("If you die, game over, no retries.")
@@ -178,22 +177,22 @@ basicMonster=classes.monster("Gremlin", 4, 4, 13,0.25 )
 time.sleep(4)
 won = fight(player, basicMonster)
 player.foughtYet= True
-def rewards(won):
+def rewards(won, mult, monster):
 
     global availablePoints
     if won and won!="Ran":
-        earnedGold= int(random.randint(1,3)) * player.luckStat
+        earnedGold= int(random.randint(1,mult)) * player.luckStat
         print(f"You earned {earnedGold} gold")
         player.money+=earnedGold
         time.sleep(2)
-        availablePoints+=basicMonster.strengthStat
+        availablePoints+=monster.speedStat
         print(f"You have {availablePoints} points to spend now.")
     elif won == "Ran":
         print(f"You ran from the monster!")
     else:
         print("Game over")
         exit()
-rewards(won)
+rewards(won, 3, basicMonster)
 time.sleep(2)
 def afterFight():
     global remainingStats
@@ -227,9 +226,36 @@ def afterFight():
                 changeStat(choice)
 afterFight()
 time.sleep(2)
-print("You will now enter your second fight. This will be much harder")
-newMonster=classes.monster("screenager", 28, 5, 20,0.30 )
-won = fight(player, newMonster)
-rewards(won)
+monsters = [
+    classes.monster("Goblin", 15, 5, 18, 0.35),
+    classes.monster("screenager", 28, 7, 22, 0.40),
+    classes.monster("Troll", 35, 9, 35, 0.50)
+]
+print("Which monster do you want to fight?\n Your options are a goblin, a screenager, or troll")
+monsterChoice = input("^__^:").lower()
+
+# 2. Search your list for a match
+selected_monster = None
+
+for m in monsters:
+    if m.name.lower() == monsterChoice:
+        selected_monster = m
+        break
+
+# 3. Check if we actually found one
+if selected_monster:
+    print(f"You chose to fight the {selected_monster.name}!")
+    # Now you can use selected_monster.hp, etc.
+else:
+    print("That monster doesn't exist!")
+if selected_monster.name == "Goblin":
+    mult = 3
+elif selected_monster.name == "screenager":
+    mult = 4
+else:
+    mult = 6
+print(f"You will now enter your second fight against a {selected_monster.name}. This will be challenging!")
+won = fight(player, selected_monster)
+rewards(won, mult, selected_monster)
 time.sleep(3)
 afterFight()
