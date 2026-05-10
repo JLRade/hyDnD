@@ -1,6 +1,5 @@
 from classes import potion
 from classes import weapon
-from classes import hero
 import time
 def shop(player):
     print("You have entered the shop. You can buy the following things:\n")
@@ -47,13 +46,69 @@ def shop(player):
             time.sleep(2)
             return shop(player)
     elif choice == "sword":
-        if player.money >= 20:
-            newSword = weapon(6, 0.8, "rare")
+        price=20
+        chosenAttack=6
+        chosenAcc=0.7
+        print("You can either buy the sword with base stats or upgrade it")
+        time.sleep(2)
+        print("These are the base stats: attack: 6, accuracy, 70%, price: 20.")
+        time.sleep(2)
+        while True:
+            print("Do you want to upgrade? y/n")
+            choice=(input("^__^:"))
+            if choice == "y":
+                while True:
+                    print("What attack value would you like? You can choose higher or lower.\n Each extra attack you choose is an extra 2 gold")
+                    try:
+                        chosenAttack=int(input("^__^:"))
+                        break
+                    except ValueError:
+                        print("Please enter a valid number")
+                        continue
+                while True:
+                    print("What accuracy value would you like? You can choose higher or lower.\n Each 1% extra accuracy is 1 more gold")
+                    try:
+                        chosenAcc=int(input("^__^:"))
+                        if chosenAcc > 100:
+                            print("Please enter a valid number: has to be less than 100")
+                        chosenAcc/=100
+                        break
+                    except ValueError:
+                        print("Please enter a valid number")
+                        continue
+                price+=(chosenAttack-6)*2
+                price+=(chosenAcc*100)-70
+                price=int(price)
+                if price<0:
+                    price=5
+                print(f"Your weapon price is {price}")
+                time.sleep(2)
+                print("Confirm buy? y/n")
+                choice=(input("^__^:"))
+                if choice == "y":
+                    break
+                else:
+                    continue
+
+
+            elif choice == "n":
+                break
+            else:
+                print("Invalid choice, please try again.")
+                continue
+
+        if player.money >= price:
+            newSword = weapon(chosenAttack, chosenAcc, "rare")
             player.weapon= newSword
+            player.money -= price
             print("You bought an sword.")
             print(f"Sword Stats - Attack: {newSword.attackStat}, Accuracy: {int(newSword.accuracyStat*100)}%, Rarity: {newSword.rarityStat}")
-
             p=False
+        else:
+            print("You don't have enough gold to buy this sword. Pick another item or exit\n")
+            time.sleep(2)
+            return shop(player)
+
     elif choice == "exit":
         print("You have exited the shop")
         return False
