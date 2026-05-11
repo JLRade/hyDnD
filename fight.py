@@ -7,6 +7,31 @@ console = Console()
 def clear():
     # Clears the terminal screen
     console.clear()
+
+
+from rich.table import Table
+from rich.panel import Panel
+
+
+def draw_fight_header(player, monster):
+    # Create a table with no borders for a clean "HUD" look
+    table = Table.grid(expand=True)
+    table.add_column(justify="left", ratio=1)
+    table.add_column(justify="right", ratio=1)
+
+    # Player side (Left)
+    player_ui = f"[bold cyan]{player.name}[/bold cyan]\n[bold red]HP: {player.healthStat}[/bold red]"
+
+    # Monster side (Right)
+    monster_ui = f"[bold magenta]{monster.name}[/bold magenta]\n[bold red]HP: {monster.healthStat}[/bold red]"
+
+    table.add_row(player_ui, monster_ui)
+
+    # Wrap it in a single panel so it looks like a game window
+    console.print(
+        Panel(table, title="[bold white]BATTLE[/bold white]", subtitle="[italic]Fight for your life![/italic]"))
+
+
 potionUsed = False
 endfight=False
 from rich import print
@@ -20,6 +45,7 @@ def fight(player, monster):
     def playerTurn():
         time.sleep(2)
         clear()
+        draw_fight_header(player, monster)
         global potionUsed, endfight
         print("\nIt's your turn, what will you do?")
         choice = input("Options: Fight, Rest, Use potion, or Run\n^__^:")
