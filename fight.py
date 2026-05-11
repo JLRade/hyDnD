@@ -36,7 +36,7 @@ def fight(player, monster):
             else:
                 print("You missed!")
                 time.sleep(2)
-                print(f"Player health: {player.healthStat}\nMonster health: {monster.healthStat}")
+                print(f"\nPlayer health: {player.healthStat}\nMonster health: {monster.healthStat}\n")
         elif choice == "usepotion":
             if not player.potions:
                 print("You have no potions to use!")
@@ -108,15 +108,15 @@ def fight(player, monster):
 
 
     def monsterTurn():
-        if random.random() > monster.accuracyStat:
+        if random.random() <= monster.accuracyStat:
             player.healthStat -= monster.strengthStat
             print(f"\nThe {monster.name} has hit you for {monster.strengthStat} health!")
-            print(f"\nPlayer health: {player.healthStat}\nMonster health: {monster.healthStat}")
             time.sleep(2)
         else:
             print(f"\nThe {monster.name} has missed!")
             time.sleep(2)
         if player.healthStat > 0:
+            print(f"\nPlayer health: {player.healthStat}\nMonster health: {monster.healthStat}\n")
             return playerTurn()  # <-- ADD RETURN HERE
         else:
             if potionUsed:

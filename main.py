@@ -6,6 +6,7 @@ import random
 from shop import shop
 import classes as classes
 from fight import fight
+from rich import print
 try:
     from PIL import Image
 except ImportError:
@@ -259,3 +260,29 @@ won = fight(player, selected_monster)
 rewards(won, mult, selected_monster)
 time.sleep(3)
 afterFight()
+time.sleep(2)
+print("Now it is time for your last fight against the boss of this game. This will be insanely hard.\n If you lose this fight, you can try again.")
+boss = classes.monster("*enter name*", 45, 15, 65, 0.67 )
+time.sleep(3)
+while True:
+    finalWon = fight(player, boss)
+    if finalWon:
+        pass
+        break
+    else:
+        while True:
+            print("You lost. Try again? y/n")
+            choice = input("^__^:")
+            time.sleep(2)
+            match choice:
+                case "y":
+                    player.healthStat=100
+                    break
+                case "n":
+                    print("Wow, you're either an incredible coward or you just don't care about this game. \nEither way, bye!")
+                    time.sleep(3)
+                    print("[bold red on white]Game over[/bold red on white]")
+                    exit()
+                case _:
+                    print("Invalid input. try again.")
+                    continue

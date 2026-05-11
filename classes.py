@@ -12,7 +12,7 @@ class hero:
     money = 0
 
 class weapon:
-    def __init__(self, attack, accuracy, rarity ):
+    def __init__(self, attack=0, accuracy=0.5, rarity="common" ):
         self.attackStat = attack
         self.accuracyStat = accuracy
         self.rarityStat = rarity
