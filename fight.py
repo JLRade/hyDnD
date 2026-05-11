@@ -43,7 +43,7 @@ def fight(player, monster):
     print(f"\nHello, {player.name}, you have entered a fight with a {monster.name}" )
 
     def playerTurn():
-        time.sleep(0.5)
+        
         clear()
         draw_fight_header(player, monster)
         global potionUsed, endfight
@@ -149,10 +149,10 @@ def fight(player, monster):
         if random.random() <= monster.accuracyStat:
             player.healthStat -= monster.strengthStat
             print(f"\nThe {monster.name} has hit you for {monster.strengthStat} health!")
-
+            time.sleep(2)
         else:
             print(f"\nThe {monster.name} has missed!")
-
+            time.sleep(2)
         if player.healthStat > 0:
             clear()
             draw_fight_header(player, monster)
