@@ -1,6 +1,2 @@
-from shop import shop
-import classes as classes
-
-shop()
-print(classes.hero.potions)
-player = classes.hero.potions[]
+from rich import print
+print("[bold red on white]Game over[/bold red on white]")
