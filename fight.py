@@ -145,10 +145,11 @@ def fight(player, monster):
 
     def monsterTurn():
         clear()
+        draw_fight_header(player, monster)
         if random.random() <= monster.accuracyStat:
             player.healthStat -= monster.strengthStat
             print(f"\nThe {monster.name} has hit you for {monster.strengthStat} health!")
-            time.sleep(2)
+            time.sleep(0.5)
         else:
             print(f"\nThe {monster.name} has missed!")
             time.sleep(0.5)
