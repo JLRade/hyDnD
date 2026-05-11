@@ -262,7 +262,8 @@ time.sleep(3)
 afterFight()
 time.sleep(2)
 print("Now it is time for your last fight against the boss of this game. This will be insanely hard.\n If you lose this fight, you can try again.")
-boss = classes.monster("*enter name*", 45, 15, 65, 0.67 )
+print("You will be fully healed before this fight")
+boss = classes.monster("*enter name*", 40, 10, 65, 0.67 )
 time.sleep(3)
 while True:
     finalWon = fight(player, boss)
@@ -272,7 +273,7 @@ while True:
     else:
         while True:
             print("You lost. Try again? y/n")
-            choice = input("^__^:")
+            choice = input("^__^:").lower().strip()
             time.sleep(2)
             match choice:
                 case "y":
