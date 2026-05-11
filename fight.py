@@ -64,10 +64,10 @@ def fight(player, monster):
                 monster.healthStat -= damage
                 print(f"\nYou hit the {monster.name} for {damage} damage!")
                 if monster.healthStat > 0:
-                    print(f"\nPlayer health: {player.healthStat}\nMonster health: {monster.healthStat}")
+                    draw_fight_header(player, monster)
                 else:
-                    print(f"\nPlayer health: {player.healthStat}\nMonster health: 0")
-
+                    monster.healthStat =0
+                    draw_fight_header(player, monster)
             else:
                 print("You missed!")
                 time.sleep(2)
@@ -150,7 +150,7 @@ def fight(player, monster):
             print(f"\nThe {monster.name} has missed!")
             time.sleep(2)
         if player.healthStat > 0:
-            print(f"\nPlayer health: {player.healthStat}\nMonster health: {monster.healthStat}\n")
+            draw_fight_header(player, monster)
             return playerTurn()  # <-- ADD RETURN HERE
         else:
             if potionUsed:
