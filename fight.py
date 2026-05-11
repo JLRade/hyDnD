@@ -18,6 +18,7 @@ def fight(player, monster):
     print(f"\nHello, {player.name}, you have entered a fight with a {monster.name}" )
 
     def playerTurn():
+        time.sleep(2)
         clear()
         global potionUsed, endfight
         print("\nIt's your turn, what will you do?")
