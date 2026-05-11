@@ -1,2 +1,2 @@
 from rich import print
-print("[bold red on black]Game over[/bold red on black]")
+print("[bold green]Hi [/bold green]")
