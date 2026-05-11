@@ -1,6 +1,12 @@
 
 import random
 import time
+from rich import print
+from rich.console import Console
+console = Console()
+def clear():
+    # Clears the terminal screen
+    console.clear()
 potionUsed = False
 endfight=False
 from rich import print
@@ -12,6 +18,7 @@ def fight(player, monster):
     print(f"\nHello, {player.name}, you have entered a fight with a {monster.name}" )
 
     def playerTurn():
+        clear()
         global potionUsed, endfight
         print("\nIt's your turn, what will you do?")
         choice = input("Options: Fight, Rest, Use potion, or Run\n^__^:")
@@ -28,7 +35,7 @@ def fight(player, monster):
             if random.random() <= player.weapon.accuracyStat:
                 damage = player.strengthStat + player.weapon.attackStat
                 monster.healthStat -= damage
-                print(f"You hit the {monster.name} for {damage} damage!")
+                print(f"\nYou hit the {monster.name} for {damage} damage!")
                 if monster.healthStat > 0:
                     print(f"\nPlayer health: {player.healthStat}\nMonster health: {monster.healthStat}")
                 else:
