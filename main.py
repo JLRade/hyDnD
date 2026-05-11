@@ -12,7 +12,11 @@ try:
     from PIL import Image
 except ImportError:
     Image = None
-
+class GameError(Exception):
+    """Base class for all game errors"""
+    pass
+class codeError(GameError):
+    pass
 IMAGE_PATH = "/Users/calebashultz/Downloads/Projects/hyDnD/oliversleeping.jpg"
 console = Console()
 # This file path points to the dungeon image that will be shown if Pillow is installed.
@@ -271,13 +275,14 @@ afterFight()
 time.sleep(2)
 print("Now it is time for your last fight against the boss of this game. This will be insanely hard.\n If you lose this fight, you can try again.")
 print("You will be fully healed before this fight")
-boss = classes.monster("*enter name*", 40, 10, 65, 0.67 )
+boss = classes.monster("PYTHON", 40, 10, 65, 0.67 )
 time.sleep(3)
 while True:
     finalWon = fight(player, boss)
     if finalWon:
         print("[bold green]You won the game![/bold green]")
-        break
+        time.sleep(2)
+        raise codeError("You have broken the code!")
     else:
         while True:
             print("You lost. Try again? y/n")
@@ -295,6 +300,3 @@ while True:
                 case _:
                     print("Invalid input. try again.")
                     continue
-time.sleep(2)
-print("Thanks for playing!")
-exit()
