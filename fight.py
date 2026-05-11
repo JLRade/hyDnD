@@ -64,8 +64,10 @@ def fight(player, monster):
                 monster.healthStat -= damage
                 print(f"\nYou hit the {monster.name} for {damage} damage!")
                 if monster.healthStat > 0:
+                    clear()
                     draw_fight_header(player, monster)
                 else:
+                    clear()
                     monster.healthStat =0
                     draw_fight_header(player, monster)
             else:
