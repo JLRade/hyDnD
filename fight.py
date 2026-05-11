@@ -3,6 +3,7 @@ import random
 import time
 potionUsed = False
 endfight=False
+from rich import print
 def fight(player, monster):
     global potionUsed, endfight
 
@@ -86,7 +87,6 @@ def fight(player, monster):
                         player.speedStat -= 5
                     case "luck":
                         player.luckStat -= 5
-            "You ran from the monster!"
             return "Ran"
         elif monster.healthStat > 0:
             return monsterTurn()
@@ -101,7 +101,7 @@ def fight(player, monster):
                         player.speedStat -= 5
                     case "luck":
                         player.luckStat -= 5
-            print("You won the fight!")
+            print("[bold green]You won the fight![bold green]")
             global won
             won = True
             return won

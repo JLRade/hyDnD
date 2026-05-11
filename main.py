@@ -189,9 +189,9 @@ def rewards(won, mult, monster):
         availablePoints+=monster.speedStat
         print(f"You have {availablePoints} points to spend now.")
     elif won == "Ran":
-        print(f"You ran from the monster!")
+        print(f"[bold yellow]You ran from the monster![/bold yellow]")
     else:
-        print("Game over")
+        print("[bold red]Game over[/bold red]")
         exit()
 rewards(won, 3, basicMonster)
 time.sleep(2)

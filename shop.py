@@ -54,6 +54,7 @@ def shop(player):
         print("These are the base stats: attack: 6, accuracy, 70%, price: 20.")
         time.sleep(2)
         while True:
+            price=20
             print("Do you want to upgrade? y/n")
             choice=(input("^__^:"))
             if choice == "y":
