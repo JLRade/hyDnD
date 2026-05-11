@@ -152,6 +152,7 @@ def fight(player, monster):
             print(f"\nThe {monster.name} has missed!")
             time.sleep(2)
         if player.healthStat > 0:
+            clear()
             draw_fight_header(player, monster)
             return playerTurn()  # <-- ADD RETURN HERE
         else:
