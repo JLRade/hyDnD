@@ -7,13 +7,14 @@ from shop import shop
 import classes as classes
 from fight import fight
 from rich import print
+from rich.console import Console
 try:
     from PIL import Image
 except ImportError:
     Image = None
 
 IMAGE_PATH = "/Users/calebashultz/Downloads/Projects/hyDnD/oliversleeping.jpg"
-
+console = Console()
 # This file path points to the dungeon image that will be shown if Pillow is installed.
 # It is fixed so the game always knows exactly where to find the picture.
 # If the file is missing, the program prints a message instead of crashing.
@@ -21,7 +22,10 @@ IMAGE_PATH = "/Users/calebashultz/Downloads/Projects/hyDnD/oliversleeping.jpg"
 # A hero object is created so the game has someone to play as.
 # A weapon object is prepared later when the giant gives the player a sword.
 # These objects come from the custom `classes` module.
-
+#this cleans up the terminal whenever needed
+def clear():
+    # Clears the terminal screen
+    console.clear()
 
 # The player is asked for a name so the story can address them directly.
 # That name is stored on the hero object.
@@ -159,6 +163,7 @@ else:
     # It tells the player they still have unused points.
     # The game then moves on to creating the weapon.
     print(f"All stats were chosen. You still have {availablePoints} points left for later.")
+clear()
 sword=classes.weapon(2,0.65,"common")
 player.weapon=sword
 print("You have been given a basic sword that has an attack stat of two, but it has a 65% accuracy.")
@@ -176,6 +181,7 @@ print("If you die, game over, no retries.")
 print("But if you win, you will get some loot, which can get better depending on your luck stat.")
 basicMonster=classes.monster("Gremlin", 4, 4, 13,0.25 )
 time.sleep(4)
+clear()
 won = fight(player, basicMonster)
 player.foughtYet= True
 def rewards(won, mult, monster):
@@ -225,6 +231,7 @@ def afterFight():
                 if choice=="exit":
                     break
                 changeStat(choice)
+clear()
 afterFight()
 time.sleep(2)
 monsters = [
@@ -232,6 +239,7 @@ monsters = [
     classes.monster("screenager", 28, 7, 22, 0.40),
     classes.monster("Troll", 35, 9, 35, 0.50)
 ]
+clear()
 print("Which monster do you want to fight?\n Your options are a goblin, a screenager, or troll")
 monsterChoice = input("^__^:").lower()
 
