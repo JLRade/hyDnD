@@ -43,7 +43,7 @@ def fight(player, monster):
     print(f"\nHello, {player.name}, you have entered a fight with a {monster.name}" )
 
     def playerTurn():
-        
+
         clear()
         draw_fight_header(player, monster)
         global potionUsed, endfight
@@ -64,9 +64,11 @@ def fight(player, monster):
                 monster.healthStat -= damage
                 print(f"\nYou hit the {monster.name} for {damage} damage!")
                 if monster.healthStat > 0:
+                    time.sleep(2)
                     clear()
                     draw_fight_header(player, monster)
                 else:
+                    time.sleep(2)
                     clear()
                     monster.healthStat =0
                     draw_fight_header(player, monster)
