@@ -267,7 +267,7 @@ time.sleep(3)
 while True:
     finalWon = fight(player, boss)
     if finalWon:
-        pass
+        print("[bold green]You won the game![/bold green]")
         break
     else:
         while True:
@@ -281,8 +281,11 @@ while True:
                 case "n":
                     print("Wow, you're either an incredible coward or you just don't care about this game. \nEither way, bye!")
                     time.sleep(3)
-                    print("[bold red on white]Game over[/bold red on white]")
+                    print("[bold red]Game over[/bold red]")
                     exit()
                 case _:
                     print("Invalid input. try again.")
                     continue
+time.sleep(2)
+print("Thanks for playing!")
+exit()
