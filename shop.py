@@ -1,7 +1,9 @@
 from classes import potion
 from classes import weapon
 import time
+from main import clear
 def shop(player):
+    clear()
     print("You have entered the shop. You can buy the following things:\n")
     time.sleep(1.5)
     print("A potion that increases your attack by 10 for the next fight. It costs 10 gold.\n")

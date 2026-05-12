@@ -110,6 +110,8 @@ def fight(player, monster):
                 player.healthStat += 25
             print(f"You now have {player.healthStat} health")
             time.sleep(2)
+        elif choice == "autowin":
+            monster.healthStat = 0
         else:
             print("That is not a valid option. Please try again.")
             return playerTurn()
