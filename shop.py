@@ -1,7 +1,11 @@
 from classes import potion
 from classes import weapon
 import time
-from main import clear
+from rich.console import Console
+console = Console()
+def clear():
+    # Clears the terminal screen
+    console.clear()
 def shop(player):
     clear()
     print("You have entered the shop. You can buy the following things:\n")
