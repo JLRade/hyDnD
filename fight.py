@@ -111,7 +111,7 @@ def fight(player, monster):
                 player.healthStat += 25
             print(f"You now have {player.healthStat} health")
             time.sleep(2)
-        elif choice == "autowin":
+        elif choice == "autowin" and player.name == "admin" and player.iqStat<=20:
             monster.healthStat = 0
         else:
             print("That is not a valid option. Please try again.")
