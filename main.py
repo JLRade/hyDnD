@@ -275,6 +275,7 @@ afterFight()
 time.sleep(2)
 print("Now it is time for your last fight against the boss of this game. This will be insanely hard.\n If you lose this fight, you can try again.")
 print("You will be fully healed before this fight")
+player.healthStat=100
 boss = classes.monster("PYTHON", 40, 10, 65, 0.67 )
 time.sleep(3)
 while True:
