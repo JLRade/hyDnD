@@ -75,13 +75,14 @@ def fight(player, monster):
             else:
                 print("You missed!")
                 time.sleep(2)
-                print(f"\nPlayer health: {player.healthStat}\nMonster health: {monster.healthStat}\n")
         elif choice == "usepotion":
             if not player.potions:
                 print("You have no potions to use!")
+                time.sleep(2)
                 return playerTurn()
             elif potionUsed == True:
                 print("You have already used a potion this fight! Pick another action.")
+                time.sleep(2)
                 return playerTurn()
             else:
                 potionChoice=input("What potion would you like to use?\n")
@@ -100,7 +101,7 @@ def fight(player, monster):
                     case "luck":
                         player.luckStat += player.potions.pop("luck")
                         potionUsed = "luck"
-
+                time.sleep(2)
         elif choice == "rest":
             if player.healthStat > 75:
                 player.healthStat =100
@@ -114,6 +115,7 @@ def fight(player, monster):
             monster.healthStat = 0
         else:
             print("That is not a valid option. Please try again.")
+            time.sleep(2)
             return playerTurn()
         if endfight == True:
             if potionUsed:
