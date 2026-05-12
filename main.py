@@ -35,7 +35,7 @@ def clear():
 # That name is stored on the hero object.
 # This makes the adventure feel personal.
 
-
+clear()
 player = classes.hero(input("Greetings, what is your name?\n^__^:"))
 
 
