@@ -272,6 +272,7 @@ print(f"You will now enter your second fight against a {selected_monster.name}. 
 won = fight(player, selected_monster)
 rewards(won, mult, selected_monster)
 time.sleep(3)
+clear()
 afterFight()
 time.sleep(2)
 print("Now it is time for your last fight against the boss of this game. This will be insanely hard.\n If you lose this fight, you can try again.")
