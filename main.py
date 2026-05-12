@@ -283,7 +283,7 @@ while True:
     if finalWon:
         print("[bold green]You won the game![/bold green]")
         time.sleep(2)
-        raise codeError("You have broken the code!")
+        raise codeError("By defeating the boss Python, you have broken the code!")
     else:
         while True:
             print("You lost. Try again? y/n")
