@@ -8,6 +8,7 @@ import classes as classes
 from fight import fight
 from rich import print
 from rich.console import Console
+import questionary
 try:
     from PIL import Image
 except ImportError:
@@ -196,7 +197,7 @@ def rewards(won, mult, monster):
         earnedGold= int(random.randint(1,mult)) * player.luckStat
         print(f"You earned {earnedGold} gold")
         player.money+=earnedGold
-        time.sleep(2)
+        time.sleep(3.5)
         availablePoints+=monster.speedStat
         print(f"You have {availablePoints} points to spend now.")
     elif won == "Ran":
@@ -208,7 +209,9 @@ rewards(won, 3, basicMonster)
 time.sleep(2)
 def afterFight():
     global remainingStats
-    print("You can now do one of four actions (type the number):\n1) Rest and fully heal \n2) Go to the shop")
+    print(f"Available points: {availablePoints}")
+    print(f"Available gold: {player.money}")
+    print("You can now do one of three actions (type the number):\n1) Rest and fully heal \n2) Go to the shop")
     print("3) Use points")
     choice= ""
     while not choice:
@@ -245,8 +248,13 @@ monsters = [
     classes.monster("Troll", 35, 9, 35, 0.50)
 ]
 clear()
-print("Which monster do you want to fight?\n Your options are a goblin, a screenager, or troll")
-monsterChoice = input("^__^:").lower()
+
+monsterChoice = questionary.select(
+    "Choose your foe:",
+    choices=["Goblin", "Screenager", "Troll"]
+).ask()
+
+monsterChoice = monsterChoice.lower()
 
 # 2. Search your list for a match
 selected_monster = None
